@@ -487,74 +487,19 @@ def generate_pdf_report(df, company_name):
     styles = getSampleStyleSheet()
     elements = []
     
-    # Add title
+    # Custom styles
     title_style = styles["Title"]
-    elements.append(Paragraph(f"{company_name} - Startup Analysis Report", title_style))
+    heading1_style = styles["Heading1"]
+    heading2_style = styles["Heading2"]
+    normal_style = styles["Normal"]
+    
+    # Add title
+    elements.append(Paragraph(f"Competitor Analysis Report for {company_name}", title_style))
     elements.append(Spacer(1, 20))
     
     # Get company data
     company_data = df[df['Company Name'] == company_name].sort_values('Year', ascending=False)
     latest_data = company_data.iloc[0]
-    
-    # Add company overview
-    elements.append(Paragraph("Company Overview", styles["Heading1"]))
-    elements.append(Spacer(1, 10))
-    
-    overview_data = [
-        ["Metric", "Value"],
-        ["Industry", str(latest_data['Primary_Industry'])],
-        ["Founding Year", str(int(latest_data['Founding Year']))],
-        ["Age", f"{int(latest_data['Age (Years)'])} years"],
-        ["Total Funding", f"${latest_data['Funding_Numeric']:,.0f}"],
-        ["Team Size", f"{int(latest_data['Team_Size_Numeric']):,}"],
-        ["Maturity Score", f"{latest_data['Maturity_Score']:.1f}/25"],
-        ["Funding Efficiency", f"{latest_data['Funding_Efficiency']:.2f}"],
-        ["Revenue Efficiency", f"{latest_data['Revenue_Efficiency']:.2f}"]
-    ]
-    
-    overview_table = Table(overview_data, colWidths=[200, 300])
-    overview_table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (1, 0), colors.lightblue),
-        ('TEXTCOLOR', (0, 0), (1, 0), colors.whitesmoke),
-        ('ALIGN', (0, 0), (1, 0), 'CENTER'),
-        ('FONTNAME', (0, 0), (1, 0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0, 0), (1, 0), 12),
-        ('BOTTOMPADDING', (0, 0), (1, 0), 12),
-        ('BACKGROUND', (0, 1), (1, -1), colors.beige),
-        ('GRID', (0, 0), (-1, -1), 1, colors.black)
-    ]))
-    
-    elements.append(overview_table)
-    elements.append(Spacer(1, 20))
-    
-    # Add tech stack and product launches
-    elements.append(Paragraph("Technology & Products", styles["Heading1"]))
-    elements.append(Spacer(1, 10))
-    
-    tech_data = [
-        ["Category", "Details"],
-        ["Tech Stack / Core Capabilities", str(latest_data['Tech Stack / Core AI Capabilities'])],
-        ["Recent Product Launches", str(latest_data['Product Launches / Updates (last 2 years)'])]
-    ]
-    
-    tech_table = Table(tech_data, colWidths=[200, 300])
-    tech_table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (1, 0), colors.lightblue),
-        ('TEXTCOLOR', (0, 0), (1, 0), colors.whitesmoke),
-        ('ALIGN', (0, 0), (1, 0), 'CENTER'),
-        ('FONTNAME', (0, 0), (1, 0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0, 0), (1, 0), 12),
-        ('BOTTOMPADDING', (0, 0), (1, 0), 12),
-        ('BACKGROUND', (0, 1), (1, -1), colors.beige),
-        ('GRID', (0, 0), (-1, -1), 1, colors.black)
-    ]))
-    
-    elements.append(tech_table)
-    elements.append(Spacer(1, 20))
-    
-    # Add industry comparison
-    elements.append(Paragraph("Industry Comparison", styles["Heading1"]))
-    elements.append(Spacer(1, 10))
     
     # Get industry of the selected company
     company_industry = latest_data['Primary_Industry']
@@ -565,55 +510,260 @@ def generate_pdf_report(df, company_name):
     # Get latest year data for each company
     industry_latest = industry_df.sort_values('Year', ascending=False).drop_duplicates('Company Name')
     
-    # Sort by maturity score
-    # Rank only among companies in the filtered industry data (with year filter applied)
+    # Sort by maturity score and get top competitors (excluding the selected company)
     industry_ranked = industry_latest.sort_values('Maturity_Score', ascending=False)
-    industry_ranked['Rank_in_Industry'] = range(1, len(industry_ranked) + 1)
-
-    # Get rank for selected company
-    company_rank_row = industry_ranked[industry_ranked['Company Name'] == company_name]
-    company_rank = int(company_rank_row['Rank_in_Industry'].values[0]) if not company_rank_row.empty else 'N/A'
-    # Get rank of the selected company
+    competitors = industry_ranked[industry_ranked['Company Name'] != company_name].head(5)
     
+    # Calculate company rank in industry
+    company_rank = industry_ranked['Company Name'].tolist().index(company_name) + 1
+    total_companies = len(industry_ranked)
     
-    # Get top 5 companies in the industry
-    top_companies = industry_ranked.head(5)
-    
-    elements.append(Paragraph(f"Rank in {company_industry} Industry based on Maturity Score: #{company_rank}", styles["Normal"]))
+    # 1. EXECUTIVE SUMMARY
+    elements.append(Paragraph("1. Executive Summary", heading1_style))
     elements.append(Spacer(1, 10))
     
-    # Add top companies table
-    elements.append(Paragraph("Top Companies in Industry", styles["Heading2"]))
-    elements.append(Spacer(1, 10))
+    summary_data = [
+        ["Metric", "Value"],
+        ["Company Name", company_name],
+        ["Industry", str(latest_data['Primary_Industry'])],
+        ["Founding Year", str(int(latest_data['Founding Year']))],
+        ["Industry Rank", f"#{company_rank} of {total_companies}"],
+        ["Maturity Score", f"{latest_data['Maturity_Score']:.1f}/25"],
+        ["Total Funding", f"${latest_data['Funding_Numeric']:,.0f}"],
+        ["Team Size", f"{int(latest_data['Team_Size_Numeric']):,}"]
+    ]
     
-    top_data = [["Rank", "Company", "Maturity Score", "Funding"]]
-    
-    for i, (_, row) in enumerate(top_companies.iterrows(), 1):
-        top_data.append([
-            str(i),
-            row['Company Name'],
-            f"{row['Maturity_Score']:.1f}",
-            f"${row['Funding_Numeric']:,.0f}"
-        ])
-    
-    top_table = Table(top_data, colWidths=[50, 200, 100, 150])
-    top_table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (3, 0), colors.lightblue),
-        ('TEXTCOLOR', (0, 0), (3, 0), colors.whitesmoke),
-        ('ALIGN', (0, 0), (3, 0), 'CENTER'),
-        ('FONTNAME', (0, 0), (3, 0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0, 0), (3, 0), 12),
-        ('BOTTOMPADDING', (0, 0), (3, 0), 12),
-        ('BACKGROUND', (0, 1), (3, -1), colors.beige),
+    summary_table = Table(summary_data, colWidths=[200, 300])
+    summary_table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (1, 0), colors.lightblue),
+        ('TEXTCOLOR', (0, 0), (1, 0), colors.whitesmoke),
+        ('ALIGN', (0, 0), (1, 0), 'CENTER'),
+        ('FONTNAME', (0, 0), (1, 0), 'Helvetica-Bold'),
+        ('FONTSIZE', (0, 0), (1, 0), 12),
+        ('BOTTOMPADDING', (0, 0), (1, 0), 12),
+        ('BACKGROUND', (0, 1), (1, -1), colors.beige),
         ('GRID', (0, 0), (-1, -1), 1, colors.black)
     ]))
     
-    elements.append(top_table)
+    elements.append(summary_table)
+    elements.append(Spacer(1, 20))
+    
+    # 2. COMPETITOR OVERVIEW
+    elements.append(Paragraph("2. Competitor Overview", heading1_style))
+    elements.append(Spacer(1, 10))
+    
+    for _, competitor in competitors.iterrows():
+        elements.append(Paragraph(f"Competitor: {competitor['Company Name']}", heading2_style))
+        
+        # Get competitor rank
+        comp_rank = industry_ranked['Company Name'].tolist().index(competitor['Company Name']) + 1
+        
+        comp_data = [
+            ["Metric", "Value"],
+            ["Industry", str(competitor['Primary_Industry'])],
+            ["Industry Rank", f"#{comp_rank} of {total_companies}"],
+            ["Founding Year", str(int(competitor['Founding Year']))],
+            ["Funding", f"${competitor['Funding_Numeric']:,.0f}"],
+            ["Team Size", f"{int(competitor['Team_Size_Numeric']):,}"],
+            ["Maturity Score", f"{competitor['Maturity_Score']:.1f}/25"],
+            ["Revenue Efficiency", f"{competitor['Revenue_Efficiency']:.2f}"]
+        ]
+        
+        comp_table = Table(comp_data, colWidths=[200, 300])
+        comp_table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (1, 0), colors.lightblue),
+            ('TEXTCOLOR', (0, 0), (1, 0), colors.whitesmoke),
+            ('ALIGN', (0, 0), (1, 0), 'CENTER'),
+            ('FONTNAME', (0, 0), (1, 0), 'Helvetica-Bold'),
+            ('FONTSIZE', (0, 0), (1, 0), 12),
+            ('BOTTOMPADDING', (0, 0), (1, 0), 12),
+            ('BACKGROUND', (0, 1), (1, -1), colors.beige),
+            ('GRID', (0, 0), (-1, -1), 1, colors.black)
+        ]))
+        
+        elements.append(comp_table)
+        elements.append(Spacer(1, 15))
+    
+    # 3. COMPARISON TABLE
+    elements.append(Paragraph("3. Comparison Table", heading1_style))
+    elements.append(Spacer(1, 10))
+    
+    # Prepare data for comparison table
+    comparison_data = [["Company", "Rank", "Funding", "Team Size", "Customer Base", "Revenue", "Maturity Score"]]
+    
+    # Add selected company data
+    comparison_data.append([
+        company_name,
+        f"#{company_rank}",
+        f"${latest_data['Funding_Numeric']:,.0f}",
+        f"{int(latest_data['Team_Size_Numeric']):,}",
+        f"{int(latest_data['Customer_Base_Numeric']):,}" if not pd.isna(latest_data['Customer_Base_Numeric']) else "N/A",
+        f"${latest_data['Revenue_Numeric']:,.0f}" if not pd.isna(latest_data['Revenue_Numeric']) else "N/A",
+        f"{latest_data['Maturity_Score']:.1f}"
+    ])
+    
+    # Add competitor data
+    for _, competitor in competitors.iterrows():
+        comp_rank = industry_ranked['Company Name'].tolist().index(competitor['Company Name']) + 1
+        comparison_data.append([
+            competitor['Company Name'],
+            f"#{comp_rank}",
+            f"${competitor['Funding_Numeric']:,.0f}",
+            f"{int(competitor['Team_Size_Numeric']):,}",
+            f"{int(competitor['Customer_Base_Numeric']):,}" if not pd.isna(competitor['Customer_Base_Numeric']) else "N/A",
+            f"${competitor['Revenue_Numeric']:,.0f}" if not pd.isna(competitor['Revenue_Numeric']) else "N/A",
+            f"{competitor['Maturity_Score']:.1f}"
+        ])
+    
+    comparison_table = Table(comparison_data, colWidths=[90, 40, 70, 70, 70, 70, 70])
+    comparison_table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (6, 0), colors.lightblue),
+        ('TEXTCOLOR', (0, 0), (6, 0), colors.whitesmoke),
+        ('ALIGN', (0, 0), (6, 0), 'CENTER'),
+        ('FONTNAME', (0, 0), (6, 0), 'Helvetica-Bold'),
+        ('FONTSIZE', (0, 0), (6, 0), 12),
+        ('BOTTOMPADDING', (0, 0), (6, 0), 12),
+        ('BACKGROUND', (0, 1), (6, 1), colors.lightgreen),  # Highlight selected company
+        ('BACKGROUND', (0, 2), (6, -1), colors.beige),
+        ('GRID', (0, 0), (-1, -1), 1, colors.black)
+    ]))
+    
+    elements.append(comparison_table)
+    elements.append(Spacer(1, 20))
+    
+    # 4. VISUAL COMPARISON CHARTS
+    elements.append(Paragraph("4. Visual Comparison Chart", heading1_style))
+    elements.append(Spacer(1, 10))
+    
+    # Create maturity score chart
+    plt.figure(figsize=(8, 4))
+    
+    # Combine selected company and competitors for chart
+    chart_companies = pd.concat([
+        pd.DataFrame({'Company': [company_name], 'Maturity_Score': [latest_data['Maturity_Score']], 'Rank': [company_rank]}),
+        pd.DataFrame({'Company': competitors['Company Name'], 
+                     'Maturity_Score': competitors['Maturity_Score'],
+                     'Rank': [industry_ranked['Company Name'].tolist().index(comp) + 1 for comp in competitors['Company Name']]})
+    ])
+    
+    # Sort by maturity score
+    chart_companies = chart_companies.sort_values('Maturity_Score', ascending=False)
+    
+    # Create bar chart
+    bars = plt.bar(
+        chart_companies['Company'], 
+        chart_companies['Maturity_Score'], 
+        color=['green' if x == company_name else 'blue' for x in chart_companies['Company']]
+    )
+    
+    # Add rank labels above bars
+    for i, bar in enumerate(bars):
+        plt.text(
+            bar.get_x() + bar.get_width()/2, 
+            bar.get_height() + 0.3, 
+            f"Rank #{chart_companies['Rank'].iloc[i]}", 
+            ha='center', 
+            fontweight='bold'
+        )
+    
+    plt.title('Maturity Scores by Company')
+    plt.xlabel('Company')
+    plt.ylabel('Maturity Score')
+    plt.xticks(rotation=45, ha='right')
+    plt.ylim(0, max(chart_companies['Maturity_Score']) * 1.2)  # Add space for rank labels
+    plt.tight_layout()
+    
+    # Save chart to buffer
+    img_buffer = BytesIO()
+    plt.savefig(img_buffer, format='png')
+    img_buffer.seek(0)
+    
+    # Add chart to PDF
+    img = Image(img_buffer, width=450, height=250)
+    elements.append(img)
+    elements.append(Spacer(1, 20))
+    
+    # 5. SUMMARY INSIGHT
+    elements.append(Paragraph("5. Summary Insight", heading1_style))
+    elements.append(Spacer(1, 10))
+    
+    # Calculate rankings
+    all_companies = pd.concat([
+        pd.DataFrame({'Company': [company_name], 'Funding': [latest_data['Funding_Numeric']], 'Maturity': [latest_data['Maturity_Score']]}),
+        pd.DataFrame({'Company': competitors['Company Name'], 'Funding': competitors['Funding_Numeric'], 'Maturity': competitors['Maturity_Score']})
+    ])
+    
+    funding_rank = all_companies.sort_values('Funding', ascending=False)['Company'].tolist().index(company_name) + 1
+    maturity_rank = all_companies.sort_values('Maturity', ascending=False)['Company'].tolist().index(company_name) + 1
+    
+    # Generate insights
+    insights = []
+    
+    # Industry rank insight
+    if company_rank == 1:
+        insights.append(f"{company_name} is the top-ranked company in the {company_industry} industry based on maturity score.")
+    elif company_rank <= 3:
+        insights.append(f"{company_name} is ranked #{company_rank} in the {company_industry} industry, placing it among the top performers.")
+    else:
+        insights.append(f"{company_name} is ranked #{company_rank} out of {total_companies} companies in the {company_industry} industry.")
+    
+    # Funding insight
+    if funding_rank == 1:
+        insights.append(f"In terms of funding, {company_name} leads all competitors in this analysis.")
+    else:
+        top_funders = funding_rank <= 3 and ", ".join(all_companies.sort_values('Funding', ascending=False)['Company'].tolist()[:funding_rank-1])
+        insights.append(f"In terms of funding, {company_name} ranks #{funding_rank} behind {top_funders}.")
+    
+    # Maturity insight compared to direct competitors
+    if maturity_rank == 1:
+        insights.append(f"{company_name} has the highest maturity score among all analyzed companies.")
+    else:
+        top_mature = maturity_rank <= 3 and ", ".join(all_companies.sort_values('Maturity', ascending=False)['Company'].tolist()[:maturity_rank-1])
+        insights.append(f"For maturity, {company_name} ranks #{maturity_rank} behind {top_mature}.")
+    
+    # Revenue efficiency insight if available
+    if not pd.isna(latest_data['Revenue_Efficiency']):
+        better_efficiency = competitors[competitors['Revenue_Efficiency'] > latest_data['Revenue_Efficiency']]
+        if len(better_efficiency) == 0:
+            insights.append(f"{company_name} leads in revenue efficiency compared to all competitors.")
+        else:
+            insights.append(f"{len(better_efficiency)} competitors have better revenue efficiency than {company_name}.")
+    
+    # Add insights to PDF
+    for insight in insights:
+        elements.append(Paragraph(insight, normal_style))
+        elements.append(Spacer(1, 5))
+    
+    elements.append(Spacer(1, 15))
+    
+    # 6. APPENDIX (OPTIONAL)
+    elements.append(Paragraph("6. Appendix", heading1_style))
+    elements.append(Spacer(1, 10))
+    
+    appendix_data = [
+        ["Category", "Details"],
+        ["Tech Stack / Core Capabilities", str(latest_data['Tech Stack / Core AI Capabilities'])],
+        ["Recent Product Launches", str(latest_data['Product Launches / Updates (last 2 years)'])]
+    ]
+    
+    appendix_table = Table(appendix_data, colWidths=[200, 300])
+    appendix_table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (1, 0), colors.lightblue),
+        ('TEXTCOLOR', (0, 0), (1, 0), colors.whitesmoke),
+        ('ALIGN', (0, 0), (1, 0), 'CENTER'),
+        ('FONTNAME', (0, 0), (1, 0), 'Helvetica-Bold'),
+        ('FONTSIZE', (0, 0), (1, 0), 12),
+        ('BOTTOMPADDING', (0, 0), (1, 0), 12),
+        ('BACKGROUND', (0, 1), (1, -1), colors.beige),
+        ('GRID', (0, 0), (-1, -1), 1, colors.black)
+    ]))
+    
+    elements.append(appendix_table)
     elements.append(Spacer(1, 20))
     
     # Add footer with generation date
     footer_text = f"Report generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-    elements.append(Paragraph(footer_text, styles["Normal"]))
+    elements.append(Paragraph(footer_text, normal_style))
     
     # Build PDF
     doc.build(elements)
