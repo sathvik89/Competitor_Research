@@ -1,36 +1,106 @@
-Company Name,Total Funding Raised (USD or INR),Number of Funding Rounds,Last Funding Date,Team Size,Founding Year,Age (Years),Tech Stack / Core AI Capabilities,Customer/User Base Size,Revenue,Product Launches / Updates (last 2 years),Industry/Category Tags
-Sharang Shakti,$600K,1,null,null,2023,2,UAV Technology / Defense Tech,null,null,hantR UAV,Defense Tech;UAV;Military;Security
-Swish,$2M,1,2024-08,null,2024,1,Food Delivery Platform,10000+,null,Cloud Kitchen Launch,FoodTech;Quick Commerce;Food Delivery
-Portkey.ai,null,null,null,null,2023,2,Generative AI;LLM Integration;Analytics,null,null,Model Management;Prompt Management;Analytics Tools,AI;Enterprise SaaS;Developer Tools
-Covrzy,null,null,null,null,2023,2,InsurTech;Recommendation Engine;WhatsApp Integration,150+,null,Insurance Recommendation Engine;WhatsApp Chatbot,InsurTech;SME Services;Business Insurance
-Aarogya Tech,null,null,null,null,2023,2,HealthTech;Patient Monitoring;Data Analytics,10+,null,Disease-specific Patient Monitoring System;DocSeva.com,HealthTech;Healthcare;MedTech
-Propacity,$771K,2,null,51-200,2019,6,Real Estate Analytics;Investment Platform,null,null,null,PropTech;Real Estate;Investment
-HouseEazy,$11.7M,1,null,null,2023,2,PropTech;Transaction Management,null,null,null,PropTech;Real Estate;Resale
-Landeed,null,null,null,null,2023,2,Property Title Search;Legal Tech,null,null,null,PropTech;LegalTech;Real Estate
-Flent,$777K,1,null,null,2024,1,Cloud Computing;Property Management,null,null,null,PropTech;Cloud Services;Real Estate
-Stylework Innovation Hub,$120K,1,null,null,2024,1,Workspace Management;Real Estate Tech,null,null,null,PropTech;Workspace;Real Estate
-Jivi,null,null,null,null,2024,1,AI;Healthcare;Diagnostics,null,null,null,HealthTech;AI;MedTech
-Alt Carbon,null,null,null,null,2023,2,Carbon Sequestration;Agriculture Tech,null,null,Carbon Removal Technology,CleanTech;AgriTech;Climate Tech
-Sahaj Gaming,null,null,null,null,2023,2,Gaming;Mobile Apps,25000+,null,1Ludo,Gaming;Entertainment;Mobile Gaming
-Salty,null,null,null,null,2022,3,E-commerce;Fashion Tech,null,$1M ARR,null,Fashion;E-commerce;Jewelry
-Ambiator,null,null,null,null,2024,1,Energy-efficient Cooling;CleanTech,null,null,Sustainable Cooling Systems,CleanTech;Energy;Sustainability
-Clueso,null,null,null,null,2024,1,Generative AI;Instructional Content,null,null,Training Video Generation,AI;EdTech;Enterprise SaaS
-MapMyCrop,null,null,null,null,2024,1,AgriTech;AI;Multispectral Imaging,null,null,Crop Data Analytics Platform,AgriTech;AI;Data Analytics
-Planet Electric,null,null,null,null,2024,1,Electric Vehicles;Last-mile Delivery,null,null,Electric Trucks,EV;Logistics;CleanTech
-SpanTrik,null,null,null,null,2024,1,Aerospace;Reusable Launch Vehicles,null,null,Raven Launch Vehicle,SpaceTech;Aerospace;Satellite
-TSAW Drones,null,null,null,null,2024,1,Autonomous Drones;Logistics,null,null,Logistics Drones,Drones;Logistics;AgriTech
-Umrit,null,null,null,null,2024,1,AI;Health Analytics;Disease Detection,null,null,Personal Health Assistant,HealthTech;AI;Wellness
-Vicharak,null,null,null,null,2024,1,Parallel Computing;Hardware,null,null,Computing Systems,Hardware;Computing;Enterprise Tech
-Vmaker AI,null,null,null,null,2024,1,AI;Video Editing;Content Creation,null,null,AI Video Editor,AI;Content Creation;Media Tech
-WhatsLoan,null,null,null,null,2024,1,FinTech;Loan Processing;Mobile Platform,null,null,Loan-as-a-Service Platform,FinTech;Lending;Mobile
-Segwise,$1.6M,1,null,null,2023,2,AI;Product Analytics;Growth Metrics,null,null,Product Development Insights Platform,AI;SaaS;Product Analytics
-Plugzmart,null,null,null,null,2024,1,EV Charging;CleanTech,null,null,Fast EV Charger,EV;CleanTech;Energy
-Go Do Good,null,null,null,null,2024,1,Sustainable Packaging;Agro-waste Recycling,null,null,Eco-friendly Packaging Solutions,Sustainability;Packaging;CleanTech
-Golden Feathers,null,null,null,null,2024,1,Upcycling;Textile;Sustainable Materials,null,null,Feather-based Textiles and Paper,Sustainability;Textile;Upcycling
-Meri Bhakti,null,null,null,null,2024,1,Digital Devotional Platform;Religious Tech,null,null,Astrology Consultations;Temple Locator,Religious Tech;Digital Services;Spirituality
-Sarla Aviation,null,null,null,null,2023,2,eVTOL;Urban Air Mobility,null,null,Flying Taxi Development,Aviation;Urban Mobility;Transportation
-Zepto,$1.4B,5,2023-08,null,2021,4,Quick Commerce;Logistics;Supply Chain,null,null,10-minute Grocery Delivery,Quick Commerce;Retail;Logistics
-Razorpay,$741M,8,2022-12,2000+,2014,11,Payment Gateway;FinTech;Banking Solutions,8M+,null,Razorpay Banking;Tax Payment Solution,FinTech;Payment Processing;Banking
-Ola Electric,$1.1B,6,2023-09,2000+,2017,8,Electric Vehicles;Battery Tech;Charging Infrastructure,null,null,S1 Pro;S1 Air;Electric Car Prototype,EV;Mobility;CleanTech
-CRED,$801M,7,2023-01,800+,2018,7,FinTech;Credit Card Management;Rewards Platform,11M+,null,CRED Mint;CRED Store;CRED Pay,FinTech;Consumer Tech;Credit Management
-Meesho,$1.1B,8,2022-09,2000+,2015,10,E-commerce;Social Commerce;Reselling Platform,125M+,null,Zero Commission Policy;Meesho Mall,E-commerce;Social Commerce;Retail
+Company Name,Year,Total Funding Raised (USD or INR),Number of Funding Rounds,Last Funding Date,Team Size,Founding Year,Age (Years),Tech Stack / Core AI Capabilities,Customer/User Base Size,Revenue,Product Launches / Updates (last 2 years),Industry/Category Tags
+Aarogya Tech,2022,null,null,null,null,2023,null,null,null,null,null,HealthTech;Healthcare;MedTech
+Aarogya Tech,2023,$100K,1,2023-05,5,2023,0,HealthTech;Patient Monitoring;Data Analytics,5+,null,Early Development,HealthTech;Healthcare;MedTech
+Aarogya Tech,2024,null,null,null,null,2023,1,HealthTech;Patient Monitoring;Data Analytics,10+,null,Disease-specific Patient Monitoring System;DocSeva.com,HealthTech;Healthcare;MedTech
+Alt Carbon,2022,null,null,null,null,2023,null,null,null,null,null,CleanTech;AgriTech;Climate Tech
+Alt Carbon,2023,$200K,1,2023-03,8,2023,0,Carbon Sequestration;Agriculture Tech,null,null,Early Development,CleanTech;AgriTech;Climate Tech
+Alt Carbon,2024,null,null,null,null,2023,1,Carbon Sequestration;Agriculture Tech,null,null,Carbon Removal Technology,CleanTech;AgriTech;Climate Tech
+Ambiator,2022,null,null,null,null,2024,null,null,null,null,null,CleanTech;Energy;Sustainability
+Ambiator,2023,null,null,null,null,2024,null,null,null,null,null,CleanTech;Energy;Sustainability
+Ambiator,2024,null,null,null,null,2024,0,Energy-efficient Cooling;CleanTech,null,null,Sustainable Cooling Systems,CleanTech;Energy;Sustainabilit
+Clueso,2022,null,null,null,null,2024,null,null,null,null,null,AI;EdTech;Enterprise SaaS
+Clueso,2023,null,null,null,null,2024,null,null,null,null,null,AI;EdTech;Enterprise SaaS
+Clueso,2024,null,null,null,null,2024,0,Generative AI;Instructional Content,null,null,Training Video Generation,AI;EdTech;Enterprise SaaS
+Covrzy,2022,null,null,null,null,2023,null,null,null,null,null,InsurTech;SME Services;Business Insurance
+Covrzy,2023,$150K,1,2023-06,10,2023,0,InsurTech;Recommendation Engine;WhatsApp Integration,75+,null,Early Development,InsurTech;SME Services;Business Insurance
+Covrzy,2024,null,null,null,null,2023,1,InsurTech;Recommendation Engine;WhatsApp Integration,150+,null,Insurance Recommendation Engine;WhatsApp Chatbot,InsurTech;SME Services;Business Insurance
+CRED,2022,$534M,5,2022-12,533,2018,4,FinTech;Credit Card Management;Rewards Platform,5M+,null,CRED Mint,FinTech;Consumer Tech;Credit Management
+CRED,2023,$801M,7,2023-01,800,2018,5,FinTech;Credit Card Management;Rewards Platform,8M+,null,CRED Mint;CRED Store,FinTech;Consumer Tech;Credit Management
+CRED,2024,$801M,7,2023-01,800+,2018,6,FinTech;Credit Card Management;Rewards Platform,11M+,null,CRED Mint;CRED Store;CRED Pay,FinTech;Consumer Tech;Credit Management
+Flent,2022,null,null,null,null,2024,null,null,null,null,null,PropTech;Cloud Services;Real Estate
+Flent,2023,null,null,null,null,2024,null,null,null,null,null,PropTech;Cloud Services;Real Estate
+Flent,2024,$777K,1,2024-01,15,2024,0,Cloud Computing;Property Management,null,null,null,PropTech;Cloud Services;Real Estate
+Go Do Good,2022,null,null,null,null,2024,null,null,null,null,null,Sustainability;Packaging;CleanTech
+Go Do Good,2023,null,null,null,null,2024,null,null,null,null,null,Sustainability;Packaging;CleanTech
+Go Do Good,2024,null,null,null,null,2024,0,Sustainable Packaging;Agro-waste Recycling,null,null,Eco-friendly Packaging Solutions,Sustainability;Packaging;CleanTech
+Golden Feathers,2022,null,null,null,null,2024,null,null,null,null,null,Sustainability;Textile;Upcycling
+Golden Feathers,2023,null,null,null,null,2024,null,null,null,null,null,Sustainability;Textile;Upcycling
+Golden Feathers,2024,null,null,null,null,2024,0,Upcycling;Textile;Sustainable Materials,null,null,Feather-based Textiles and Paper,Sustainability;Textile;Upcycling
+HouseEazy,2022,null,null,null,null,2023,null,null,null,null,null,PropTech;Real Estate;Resale
+HouseEazy,2023,$5.9M,0,null,20,2023,0,PropTech;Transaction Management,null,null,Early Development,PropTech;Real Estate;Resale
+HouseEazy,2024,$11.7M,1,2024-02,45,2023,1,PropTech;Transaction Management,null,null,null,PropTech;Real Estate;Resale
+Jivi,2022,null,null,null,null,2024,null,null,null,null,null,HealthTech;AI;MedTech
+Jivi,2023,null,null,null,null,2024,null,null,null,null,null,HealthTech;AI;MedTech
+Jivi,2024,null,null,null,null,2024,0,AI;Healthcare;Diagnostics,null,null,null,HealthTech;AI;MedTech
+Landeed,2022,null,null,null,null,2023,null,null,null,null,null,PropTech;LegalTech;Real Estate
+Landeed,2023,$300K,1,2023-04,12,2023,0,Property Title Search;Legal Tech,null,null,Early Development,PropTech;LegalTech;Real Estate
+Landeed,2024,null,null,null,null,2023,1,Property Title Search;Legal Tech,null,null,null,PropTech;LegalTech;Real Estate
+MapMyCrop,2022,null,null,null,null,2024,null,null,null,null,null,AgriTech;AI;Data Analytics
+MapMyCrop,2023,null,null,null,null,2024,null,null,null,null,null,AgriTech;AI;Data Analytics
+MapMyCrop,2024,null,null,null,null,2024,0,AgriTech;AI;Multispectral Imaging,null,null,Crop Data Analytics Platform,AgriTech;AI;Data Analytics
+Meesho,2022,$500M,5,2022-09,1000,2015,7,E-commerce;Social Commerce;Reselling Platform,75M+,null,Zero Commission Policy,E-commerce;Social Commerce;Retail
+Meesho,2023,$1.1B,8,2023-06,2000,2015,8,E-commerce;Social Commerce;Reselling Platform,100M+,null,Zero Commission Policy,E-commerce;Social Commerce;Retail
+Meesho,2024,$1.1B,8,2023-06,2000+,2015,9,E-commerce;Social Commerce;Reselling Platform,125M+,null,Zero Commission Policy;Meesho Mall,E-commerce;Social Commerce;Retail
+Meri Bhakti,2022,null,null,null,null,2024,null,null,null,null,null,Religious Tech;Digital Services;Spirituality
+Meri Bhakti,2023,null,null,null,null,2024,null,null,null,null,null,Religious Tech;Digital Services;Spirituality
+Meri Bhakti,2024,null,null,null,null,2024,0,Digital Devotional Platform;Religious Tech,null,null,Astrology Consultations;Temple Locator,Religious Tech;Digital Services;Spirituality
+Ola Electric,2022,$733M,4,2022-09,1333,2017,5,Electric Vehicles;Battery Tech;Charging Infrastructure,null,null,S1 Pro,EV;Mobility;CleanTech
+Ola Electric,2023,$1.1B,6,2023-09,2000,2017,6,Electric Vehicles;Battery Tech;Charging Infrastructure,null,null,S1 Pro;S1 Air,EV;Mobility;CleanTech
+Ola Electric,2024,$1.1B,6,2023-09,2000+,2017,7,Electric Vehicles;Battery Tech;Charging Infrastructure,null,null,S1 Pro;S1 Air;Electric Car Prototype,EV;Mobility;CleanTech
+Planet Electric,2022,null,null,null,null,2024,null,null,null,null,null,EV;Logistics;CleanTech
+Planet Electric,2023,null,null,null,null,2024,null,null,null,null,null,EV;Logistics;CleanTech
+Planet Electric,2024,null,null,null,null,2024,0,Electric Vehicles;Last-mile Delivery,null,null,Electric Trucks,EV;Logistics;CleanTech
+Plugzmart,2022,null,null,null,null,2024,null,null,null,null,null,EV;CleanTech;Energy
+Plugzmart,2023,null,null,null,null,2024,null,null,null,null,null,EV;CleanTech;Energy
+Plugzmart,2024,null,null,null,null,2024,0,EV Charging;CleanTech,null,null,Fast EV Charger,EV;CleanTech;Energy
+Portkey.ai,2022,null,null,null,null,2023,null,null,null,null,null,AI;Enterprise SaaS;Developer Tools
+Portkey.ai,2023,$500K,1,2023-07,15,2023,0,Generative AI;LLM Integration;Analytics,null,null,Early Development,AI;Enterprise SaaS;Developer Tools
+Portkey.ai,2024,null,null,null,null,2023,1,Generative AI;LLM Integration;Analytics,null,null,Model Management;Prompt Management;Analytics Tools,AI;Enterprise SaaS;Developer Tools
+Propacity,2022,$514K,1,2022-05,34,2019,3,Real Estate Analytics;Investment Platform,null,null,null,PropTech;Real Estate;Investment
+Propacity,2023,$643K,2,2023-03,51,2019,4,Real Estate Analytics;Investment Platform,null,null,null,PropTech;Real Estate;Investment
+Propacity,2024,$771K,3,null,120,2019,5,Real Estate Analytics;Investment Platform,null,null,null,PropTech;Real Estate;Investment
+Razorpay,2022,$741M,8,2022-12,2000,2014,8,Payment Gateway;FinTech;Banking Solutions,5M+,null,Razorpay Banking,FinTech;Payment Processing;Banking
+Razorpay,2023,$741M,8,2022-12,2000,2014,9,Payment Gateway;FinTech;Banking Solutions,6M+,null,Razorpay Banking,FinTech;Payment Processing;Banking
+Razorpay,2024,$741M,8,2022-12,2000+,2014,10,Payment Gateway;FinTech;Banking Solutions,8M+,null,Razorpay Banking;Tax Payment Solution,FinTech;Payment Processing;Banking
+Sahaj Gaming,2022,null,null,null,null,2023,null,null,null,null,null,Gaming;Entertainment;Mobile Gaming
+Sahaj Gaming,2023,$250K,1,2023-08,12,2023,0,Gaming;Mobile Apps,12500+,null,Early Development,Gaming;Entertainment;Mobile Gaming
+Sahaj Gaming,2024,null,null,null,null,2023,1,Gaming;Mobile Apps,25000+,null,1Ludo,Gaming;Entertainment;Mobile Gaming
+Salty,2022,null,null,null,null,2022,0,E-commerce;Fashion Tech,null,$350K ARR,Early Development,Fashion;E-commerce;Jewelry
+Salty,2023,null,null,null,null,2022,1,E-commerce;Fashion Tech,null,$600K ARR,Beta Version,Fashion;E-commerce;Jewelry
+Salty,2024,null,null,null,null,2022,2,E-commerce;Fashion Tech,null,$1M ARR,null,Fashion;E-commerce;Jewelry
+Sarla Aviation,2022,null,null,null,null,2023,null,null,null,null,null,Aviation;Urban Mobility;Transportation
+Sarla Aviation,2023,$400K,1,2023-09,15,2023,0,eVTOL;Urban Air Mobility,null,null,Early Development,Aviation;Urban Mobility;Transportation
+Sarla Aviation,2024,null,null,null,null,2023,1,eVTOL;Urban Air Mobility,null,null,Flying Taxi Development,Aviation;Urban Mobility;Transportation
+Segwise,2022,null,null,null,null,2023,null,null,null,null,null,AI;SaaS;Product Analytics
+Segwise,2023,$800K,0,2023-11,10,2023,0,AI;Product Analytics;Growth Metrics,null,null,Early Development,AI;SaaS;Product Analytics
+Segwise,2024,$1.6M,1,null,25,2023,1,AI;Product Analytics;Growth Metrics,null,null,Product Development Insights Platform,AI;SaaS;Product Analytics
+Sharang Shakti,2022,null,null,null,null,2023,null,null,null,null,null,Defense Tech;UAV;Military;Security
+Sharang Shakti,2023,$300K,0,2023-10,8,2023,0,UAV Technology / Defense Tech,null,null,Early Development,Defense Tech;UAV;Military;Security
+Sharang Shakti,2024,$600K,1,null,20,2023,1,UAV Technology / Defense Tech,null,null,hantR UAV,Defense Tech;UAV;Military;Security
+SpanTrik,2022,null,null,null,null,2024,null,null,null,null,null,SpaceTech;Aerospace;Satellite
+SpanTrik,2023,null,null,null,null,2024,null,null,null,null,null,SpaceTech;Aerospace;Satellite
+SpanTrik,2024,null,null,null,null,2024,0,Aerospace;Reusable Launch Vehicles,null,null,Raven Launch Vehicle,SpaceTech;Aerospace;Satellite
+Stylework Innovation Hub,2022,null,null,null,null,2024,null,null,null,null,null,PropTech;Workspace;Real Estate
+Stylework Innovation Hub,2023,null,null,null,null,2024,null,null,null,null,null,PropTech;Workspace;Real Estate
+Stylework Innovation Hub,2024,$120K,1,2024-03,8,2024,0,Workspace Management;Real Estate Tech,null,null,null,PropTech;Workspace;Real Estate
+Swish,2022,null,null,null,null,2024,null,null,null,null,null,FoodTech;Quick Commerce;Food Delivery
+Swish,2023,null,null,null,null,2024,null,null,null,null,null,FoodTech;Quick Commerce;Food Delivery
+Swish,2024,$2M,1,2024-08,30,2024,0,Food Delivery Platform,10000+,null,Cloud Kitchen Launch,FoodTech;Quick Commerce;Food Delivery
+TSAW Drones,2022,null,null,null,null,2024,null,null,null,null,null,Drones;Logistics;AgriTech
+TSAW Drones,2023,null,null,null,null,2024,null,null,null,null,null,Drones;Logistics;AgriTech
+TSAW Drones,2024,null,null,null,null,2024,0,Autonomous Drones;Logistics,null,null,Logistics Drones,Drones;Logistics;AgriTech
+Umrit,2022,null,null,null,null,2024,null,null,null,null,null,HealthTech;AI;Wellness
+Umrit,2023,null,null,null,null,2024,null,null,null,null,null,HealthTech;AI;Wellness
+Umrit,2024,null,null,null,null,2024,0,AI;Health Analytics;Disease Detection,null,null,Personal Health Assistant,HealthTech;AI;Wellness
+Vicharak,2022,null,null,null,null,2024,null,null,null,null,null,Hardware;Computing;Enterprise Tech
+Vicharak,2023,null,null,null,null,2024,null,null,null,null,null,Hardware;Computing;Enterprise Tech
+Vicharak,2024,null,null,null,null,2024,0,Parallel Computing;Hardware,null,null,Computing Systems,Hardware;Computing;Enterprise Tech
+Vmaker AI,2022,null,null,null,null,2024,null,null,null,null,null,AI;Content Creation;Media Tech
+Vmaker AI,2023,null,null,null,null,2024,null,null,null,null,null,AI;Content Creation;Media Tech
+Vmaker AI,2024,null,null,null,null,2024,0,AI;Video Editing;Content Creation,null,null,AI Video Editor,AI;Content Creation;Media Tech
+WhatsLoan,2022,null,null,null,null,2024,null,null,null,null,null,FinTech;Lending;Mobile
+WhatsLoan,2023,null,null,null,null,2024,null,null,null,null,null,FinTech;Lending;Mobile
+WhatsLoan,2024,null,null,null,null,2024,0,FinTech;Loan Processing;Mobile Platform,null,null,Loan-as-a-Service Platform,FinTech;Lending;Mobile
+Zepto,2022,$360M,3,2022-05,250,2021,1,Quick Commerce;Logistics;Supply Chain,null,null,10-minute Grocery Delivery,Quick Commerce;Retail;Logistics
+Zepto,2023,$1.1B,5,2023-08,500,2021,2,Quick Commerce;Logistics;Supply Chain,null,null,10-minute Grocery Delivery,Quick Commerce;Retail;Logistics
+Zepto,2024,$1.1B,5,2023-08,800,2021,3,Quick Commerce;Logistics;Supply Chain,null,null,10-minute Grocery Delivery,Quick Commerce;Retail;Logistics
